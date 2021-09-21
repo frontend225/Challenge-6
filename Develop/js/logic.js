@@ -22,10 +22,10 @@ var sfxWrong= new Audio("assets/sfx/incorrect.wav");
 function startQuiz() {
     //conceal start screen
     varstartScreenEl= document.getElementById("start-screen");
-    startScreenEl.setAttribute("class, "hide");
+    startScreenEl.setAttribute("class", "hide");
 
     //reveal questions 
-    questionsEl.removeAttribute("class";);
+    questionsEl.removeAttribute("class");
 
     // begin timer
     timerId= setInterval(clockTick, 2000);
@@ -36,13 +36,13 @@ timerEl.textContent= time;
 getQuestion();
 
 //click start button to begin quiz
-startBtn..addEventListener("click", function ()
+startBtn.addEventListener("click", function () {
 
 }
 
-function clockTick() {
+function clockTick () {
     // updates the time
-    time---;
+    time--;
     timerEl.textContent = time;
 
     //determines if no time is left for the user
@@ -63,7 +63,7 @@ function getQuestion () {
     choicesEl.innerHTML = "";
     
     //loop over choices
-    currentQuestion.choices.Foreach(function(choice, i)}
+    currentQuestion.choices.forEach(function(choice, i) {
         //new buttons per choice
         varchoiceNode = document.createElement("button");
         choiceNode.setAttribute("class", "choice");
@@ -83,17 +83,18 @@ choiceNode.textContent = i + 1 + ", " + choice;
 
     //display
 choicesEl.appendChild(choiceNode);
-}];
+});
 }
 
 function questionClick() {
     //determine if user's answer is incorrect
     if (this.value !== questions[currentQuestionIndex].answer) {
         // time penalty
-        time-=10;
+        time -=10;
 
         if (time < 0) {
             time = 0;
+        }
 
             //new time
             timerEl.textContent = time;
@@ -112,7 +113,7 @@ function questionClick() {
         //display answer feedback for half a second
         feedbackEl.setAttribute("class", "feedback");
         setTimeout(function() {
-            feedbackEl.setAttribute("class, "feedback hide");
+            feedbackEl.setAttribute("class", "feedback hide");
 }, 2000);
 
 //proceed to next question
@@ -146,14 +147,14 @@ function saveHighscore() {
     var initials = initialsEl.value.trim();
 
     //ensure value is not empty
-    if {initials !== "")
+    if (initials !== "") {
 
 
     //retrieve saved scores from local storage or create an empty array if unavailable
     
     //var highscores = [];
     var highscores =
-    JSON.parse(window.localStorage.getItem("highscores")) [];
+    JSON.parse(window.localStorage.getItem("highscores")) || [];
 
     //format new score for new user
     var newScore = {
