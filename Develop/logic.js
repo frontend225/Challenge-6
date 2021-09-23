@@ -1,3 +1,9 @@
+// tracking variable
+var currentQuestionIndex = 0;
+var time= questions.length *20; 
+var timerId;
+
+
 // variable for dom elements
 
 var questionsEl= document.getElementById("questions");
@@ -8,18 +14,12 @@ var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById("initials");
 var feedbackEl= document.getElementById("feedback");
 
-
-// tracking variable
-var currentQuestionIndex = 0;
-var time= questions.length *20; 
-var timerId;
-
 // sound effects
 
 var sfxRight = new Audio("assets/sfx/correct.wav");
 var sfxWrong= new Audio("assets/sfx/incorrect.wav");
 
-function startQuiz() {
+function startQuiz() {}
     //conceal start screen
     varstartScreenEl= document.getElementById("start-screen");
     startScreenEl.setAttribute("class", "hide");
@@ -35,15 +35,13 @@ timerEl.textContent= time;
 
 getQuestion();
 
-//click start button to begin quiz
-startBtn.addEventListener("click", function () {
 
-}
 
 function clockTick () {
     // updates the time
     time--;
     timerEl.textContent = time;
+
 
     //determines if no time is left for the user
     if (time <= 0) {
@@ -68,14 +66,9 @@ function getQuestion () {
         varchoiceNode = document.createElement("button");
         choiceNode.setAttribute("class", "choice");
         choiceNode.setAttribute("value", choice);
-        //<button class="choice" value="strings", </button>
 
 
 choiceNode.textContent = i + 1 + ", " + choice;
-    //<button class="choice" value="strings">1, strings</button>
-
-
-
     
 
     //connect click event listener per choice
